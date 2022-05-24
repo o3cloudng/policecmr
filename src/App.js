@@ -5,10 +5,13 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 // import Dashboard from "./components/Dashboard";
 // import Sidebar from "./components/Sidebar";
 import Home from "./Pages/Home";
-import Profile from "./Pages/Profile";
-import Riders from "./Pages/Riders";
+import Profile from "./Pages/ProfilePage";
+import OnboardPage from "./Pages/OnboardPage";
 import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
+import AccountsPage from "./Pages/AccountsPage";
+import UsersPage from "./Pages/UsersPage";
+import SettingsPage from "./Pages/SettingsPage";
 import ErrorPage from "./Pages/ErrorPage";
 
 export default function App() {
@@ -17,7 +20,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/riders" element={<Riders />} />
+        <Route path="/onboard" element={<OnboardPage />} />
+        <Route path="/accounts" element={<AccountsPage />} />
+        <Route path="/users" element={<UsersPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="*" element={<ErrorPage />} />

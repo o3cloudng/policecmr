@@ -1,32 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import image from "../assets/profile.jpeg";
-import { HiOutlineLocationMarker } from "react-icons/hi";
 import { cardStyles } from "./ReusableStyles";
-export default function Profile() {
+export default function Error() {
   return (
     <Section>
-      <div className="image">
-        <img src={image} alt="" />
-      </div>
-      <div className="title">
-        <h2>Olumide Oderinde</h2>
-        <h5>
-          <HiOutlineLocationMarker /> Abuja, Nigeria
-        </h5>
-      </div>
-      <div className="info">
+      <div className="info mt-5 col-md-6">
         <div className="container">
-          <h5>Days at work</h5>
-          <h3>28</h3>
-        </div>
-        <div className="container">
-          <h5>Rides</h5>
-          <h3>427</h3>
-        </div>
-        <div className="container">
-          <h5>Hours</h5>
-          <h3>76</h3>
+          <h5>ERROR!</h5>
+          <h3>Something went wrong.</h3>
         </div>
       </div>
     </Section>

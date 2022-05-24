@@ -1,13 +1,13 @@
 import React from "react";
 
 import styled from "styled-components";
-import Error from "../components/Error";
+import Dashboard from "../components/Dashboard";
 import Sidebar from "../components/Sidebar";
-export default function ErrorPage() {
+export default function Onbaord() {
   return (
     <Div>
       <Sidebar />
-      <Error />
+      <Dashboard />
     </Div>
   );
 }

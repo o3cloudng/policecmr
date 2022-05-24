@@ -82,7 +82,7 @@ export default function Sidebar() {
                 className={currentLink === 3 ? "active" : "none"}
                 onClick={() => setCurrentLink(3)}
               >
-                <Link to="/">
+                <Link to="/accounts">
                   <FaAddressCard />
                   <span> Accounts</span>
                 </Link>
@@ -91,7 +91,7 @@ export default function Sidebar() {
                 className={currentLink === 2 ? "active" : "none"}
                 onClick={() => setCurrentLink(2)}
               >
-                <Link to="/riders">
+                <Link to="/onboard">
                   <RiDashboard2Fill />
                   <span> Onboarding</span>
                 </Link>
@@ -100,7 +100,7 @@ export default function Sidebar() {
                 className={currentLink === 4 ? "active" : "none"}
                 onClick={() => setCurrentLink(4)}
               >
-                <Link to="/">
+                <Link to="/users">
                   <GiTwirlCenter />
                   <span> Users</span>
                 </Link>
@@ -118,7 +118,7 @@ export default function Sidebar() {
                 className={currentLink === 6 ? "active" : "none"}
                 onClick={() => setCurrentLink(6)}
               >
-                <Link to="/">
+                <Link to="/settings">
                   <IoSettings />
                   <span> Settings</span>
                 </Link>

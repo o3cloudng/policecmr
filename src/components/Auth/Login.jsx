@@ -6,15 +6,13 @@ export default function Login() {
   useEffect(() => {
     const sr = scrollreveal({
       origin: "bottom",
-      distance: "80px",
+      distance: "100px",
       duration: 2000,
       reset: false,
     });
     sr.reveal(
       `
-        nav,
-        .row__one,
-        .row__two
+        .row
     `,
       {
         opacity: 0,
