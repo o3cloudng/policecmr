@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../horizon-ui-chakra"
+		},
+		{
+			"path": "../reactfrontend"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
