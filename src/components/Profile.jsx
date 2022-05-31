@@ -21,7 +21,7 @@ export default function Profile() {
           <h3>28</h3>
         </div>
         <div className="container">
-          <h5>Rides</h5>
+          <h5>Processed</h5>
           <h3>427</h3>
         </div>
         <div className="container">
