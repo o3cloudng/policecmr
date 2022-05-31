@@ -10,7 +10,7 @@ export default function Profile() {
         <img src={image} alt="" />
       </div>
       <div className="title">
-        <h2>Olumide Oderinde</h2>
+        <h2>Mide O</h2>
         <h5>
           <HiOutlineLocationMarker /> Abuja, Nigeria
         </h5>
