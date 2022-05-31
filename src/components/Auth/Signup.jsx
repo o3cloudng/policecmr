@@ -66,11 +66,11 @@ function Signup() {
                     <form>
                         <div className="form-row mb-4">
                             <div className="col-md-12 d-flex">
-                                <div className="col-md-6 col-sm-12">
+                                <div className="col-md-6 col-xs-12">
                                     <label for="inputEmail" className="text-white">First name</label>
                                     <input type="text" className="form-control" id="inputEmail" placeholder="First Name" />
                                 </div>
-                                <div className="col-md-6 col-sm-12 mx-2">
+                                <div className="col-md-6 col-xs-12 mx-2">
                                     <label for="inputEmail" className="text-white">Last name</label>
                                     <input type="text" className="form-control" id="inputEmail" placeholder="Last name" />
                                 </div>
@@ -78,11 +78,11 @@ function Signup() {
                         </div>
                         <div className="form-row mb-4">
                             <div className="col-md-12 d-flex">
-                                <div className="col-md-6 col-sm-12">
+                                <div className="col-md-6 col-xs-12">
                                 <label for="inputEmail" className="text-white">Email</label>
                             <input type="email" className="form-control" id="inputEmail" placeholder="Email" />
                                 </div>
-                                <div className="col-md-6 col-sm-12 mx-2">
+                                <div className="col-md-6 col-xs-12 mx-2">
                                 <label for="inputEmail" className="text-white">Phone</label>
                             <input type="email" className="form-control" id="inputEmail" placeholder="Phone" />
                                 </div>
@@ -90,11 +90,11 @@ function Signup() {
                         </div>
                         <div className="form-row mb-4">
                             <div className="col-md-12 d-flex">
-                                <div className="col-md-6 col-sm-12">
+                                <div className="col-md-6 col-xs-12">
                                     <label for="inputPassword" className="text-white">Password</label>
                                     <input type="password" className="form-control" id="inputPassword" placeholder="Password" />
                                 </div>
-                                <div className="col-md-6 col-sm-12 mx-2">
+                                <div className="col-md-6 col-xs-12 mx-2">
                                     <label for="inputEmail" className="text-white">License Office</label>
                                     {/* <Select
                                         placeholder="License Office"
@@ -113,10 +113,10 @@ function Signup() {
                         </div>
                         <div className="form-row d-flex justify-content-between">
                             <div className="col-md-12 d-flex">
-                                <div className="col-md-6 col-sm-12">
+                                <div className="col-md-6 col-xs-12">
                                     <label className="form-check-label text-white"><input type="checkbox" /> Remember me</label>
                                 </div>
-                                <div className="col-md-6 col-sm-12 mx-2">
+                                <div className="col-md-6 col-xs-12 mx-2">
                                     <button type="submit" className="btn btn-warning btn-block btn-lg float-right pull-right">Login</button>
                                 </div>
                             </div>
