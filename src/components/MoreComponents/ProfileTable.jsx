@@ -1,74 +1,78 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 // import * as ReactBootStrap from 'react-bootstrap';
 import api from "../../api/Api";
 
-
 const BootTable = () => {
+  const [profiles, setProfiles] = useState([]);
+  const fetchUrl = "/profiles";
 
-    const [users, setUsers] = useState({users: []});
-    useEffect(() => {
-        const getUsers = async () => {
-            const {data} = await api.get('/profiles')
+  useEffect(() => {
+    const getProfiles = async () => {
+      const data = await api.get(fetchUrl);
+      // console.log(data.data)
+      setProfiles(data.data);
+    };
+    getProfiles();
+  }, [fetchUrl]);
 
-            setUsers({users:data})
-
-            // console.log(users);
-        }
-        getUsers();
-    }, []);
+  // console.log(profiles)
 
   return (
     <>
-    <div>
-        <h2 className='mt-4 mb-4'>Users List</h2>
-    </div>
-    <div className="d-flex flex-row mb-4">
+      <div>
+        <h2 className="mb-4 mt-4">Profile List</h2>
+      </div>
+      <div className="d-flex flex-row mb-4">
         <button
-            type="button"
-            className="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#userModal"
+          type="button"
+          className="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#addProfileModal"
         >
-            Add New User
+          Add New Profile
         </button>
-    </div>
-    <table className='table table-striped table-dark table-responsive table-bordered'>
+      </div>
+      <table className="table table-striped table-dark table-responsive table-bordered">
         <thead>
-            <tr>
-                <th>No</th>
-                <th>Title</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Action</th>
-            </tr>
+          <tr>
+            <th>No</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Action</th>
+          </tr>
         </thead>
         <tbody>
-            {
-                users.users && users.users.map((item) => (
-                    <tr key={item.id}>
-                        <td>{item.id}</td>
-                        <td>{item.title}</td>
-                        <td>{item.firstname}</td>
-                        <td>{item.lastname}</td>
-                        <td>{item.email}</td>
-                        <td>{item.phone}</td>
-                        <td className='flex content-justify-between'>
-                            <button className='btn btn-primary btn-small'>Edit</button> &nbsp;
-                            <button className='btn btn-danger btn-small'>Delete</button>
-                        </td>
-                    </tr>
-                ))
-            }
+          {profiles.map((profile) => (
+            <tr key={profile.id}>
+              <td>{profile.id}</td>
+              <td>{profile.firstname}</td>
+              <td>{profile.lastname}</td>
+              <td>{profile.email}</td>
+              <td>{profile.phone}</td>
+              <td>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editProfileModal"
+                >
+                  Edit
+                </button>
+                &nbsp;
+                <button className="btn btn-danger btn-small">Delete</button>
+              </td>
+            </tr>
+          ))}
         </tbody>
+      </table>
 
-    </table>
-
-    <div
-        className="modal fade modal-dark"
-        id="userModal"
-        tabindex="-1"
+      {/* ADD FORM MODAL */}
+      <div
+        className="modal fade"
+        id="addProfileModal"
+        tabIndex={0}
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
@@ -76,7 +80,7 @@ const BootTable = () => {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title text-warning" id="exampleModalLabel">
-                ADD NEW USER
+                ADD NEW PROFILE
               </h5>
               <button
                 type="button"
@@ -147,9 +151,16 @@ const BootTable = () => {
                 </div>
               </div>
               <div className="row">
-                  <div className="form-row">
-                      <textarea className="form-control" name="" id="" cols="30" rows="3" placeholder="Address"></textarea>
-                  </div>
+                <div className="form-row">
+                  <textarea
+                    className="form-control"
+                    name=""
+                    id=""
+                    cols="30"
+                    rows="3"
+                    placeholder="Address"
+                  ></textarea>
+                </div>
               </div>
             </div>
             <div className="modal-footer">
@@ -166,9 +177,47 @@ const BootTable = () => {
             </div>
           </div>
         </div>
+
+        {/* EDIT FORM MODAL */}
+        <div
+          className="modal fade"
+          id="editProfileModal"
+          tabIndex={0}
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  Modal title
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">...</div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default BootTable
+export default BootTable;

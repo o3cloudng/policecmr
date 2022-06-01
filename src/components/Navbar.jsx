@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <Nav>
       <div className="title">
-        <h4>Hi Olumide,</h4>
+        <h4>Hi Guest,</h4>
         <h1>
           Welcome to <span>CMR Portal</span>
         </h1>

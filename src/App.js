@@ -1,5 +1,7 @@
 import React from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import "./App.css";
+import "bootswatch/dist/darkly/bootstrap.min.css";
 
 // import styled from "styled-components";
 // import Dashboard from "./components/Dashboard";
