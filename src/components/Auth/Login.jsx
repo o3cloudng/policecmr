@@ -2,12 +2,15 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "../Navbar";
 import scrollreveal from "scrollreveal";
+import { Card, Button, Row, Col, Form } from "react-bootstrap";
+import { Link } from 'react-router-dom';
+
 export default function Login() {
   useEffect(() => {
     const sr = scrollreveal({
       origin: "bottom",
       distance: "100px",
-      duration: 2000,
+      duration: 500,
       reset: false,
     });
     sr.reveal(
@@ -23,29 +26,40 @@ export default function Login() {
   return (
     <Section>
       <Navbar />
-        <div className="row">
-            <div className="container pt-5">
-                <div className="col-md-6 bg-black-2 mx-auto mt-5">
-                  <h1 className="text-center mb-5">Login</h1>
-                    <form>
-                        <div className="form-row mb-4">
-                            <label for="inputEmail" className="text-white">Email</label>
-                            <input type="email" className="form-control" id="inputEmail" placeholder="Email" />
-                        </div>
-                        <div className="form-row mb-4">
-                            <label for="inputPassword" className="text-white">Password</label>
-                            <input type="password" className="form-control" id="inputPassword" placeholder="Password" />
-                        </div>
-                        <div className="form-row">
-                            <label className="form-check-label text-white"><input type="checkbox" /> Remember me</label>
-                        </div>
-                        <div className="form-row">
-                            <button type="submit" className="btn btn-warning btn-lg float-right">Login</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+      <Card className="mt-5 col-md-6 offset-md-3">
+        <Card.Header><h3>Login</h3></Card.Header>
+        <Card.Body>
+          <Card.Title>Please, use your provided credentials</Card.Title>
+          <Card.Text>
+            <Row className="my-3">
+                <Col>
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    placeholder="name@example.com"
+                    required
+                  //   onChange={handleChange("email")}
+                  />
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  required
+                //   onChange={handleChange("password")}
+                />
+                </Col>
+            </Row>
+          </Card.Text>
+          <Col className="d-block">  
+          <Link to="/users" className="btn btn-secondary float-start"> Register</Link>
+          <Button variant="primary" className="float-end"> Login</Button>
+          </Col>
+        </Card.Body>
+      </Card>
     </Section>
   );
 }
@@ -61,10 +75,9 @@ const Section = styled.section`
     border-radius: 10px;
     align: center;
     }
-    .form-control {
-        height: 60px;
-        border:1px solid #fcfcfc;
-    }
+    // .form-control {
+    //     height: 40px;
+    // }
   .grid {
     display: flex;
     flex-direction: column;

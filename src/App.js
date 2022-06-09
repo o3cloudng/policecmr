@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import "bootswatch/dist/darkly/bootstrap.min.css";
 
@@ -8,6 +8,8 @@ import "bootswatch/dist/darkly/bootstrap.min.css";
 // import Sidebar from "./components/Sidebar";
 import Home from "./Pages/Home";
 import Profile from "./Pages/ProfilePage";
+import ProfileAdd from "./Pages/ProfileAddPage";
+import ProfileEditPage from "./Pages/ProfileEditPage";
 import OnboardPage from "./Pages/OnboardPage";
 import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
@@ -16,21 +18,28 @@ import UsersPage from "./Pages/UsersPage";
 import SettingsPage from "./Pages/SettingsPage";
 import ErrorPage from "./Pages/ErrorPage";
 
+import { GlobalProvider } from "./Contexts/GlobalState";
+
 export default function App() {
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/onboard" element={<OnboardPage />} />
-        <Route path="/accounts" element={<AccountsPage />} />
-        <Route path="/users" element={<UsersPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-    </Router>
+    <GlobalProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profiles" element={<Profile />} />
+          <Route path="/profiles/add" element={<ProfileAdd />} />
+          <Route path="/profiles/edit/:id" element={<ProfileEditPage />} />
+          <Route path="/onboard" element={<OnboardPage />} />
+          <Route path="/accounts" element={<AccountsPage />} />
+          <Route path="/users" element={<UsersPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </Router>
+    </GlobalProvider>
   );
 }
 

@@ -22,8 +22,8 @@ export default function Sidebar() {
   useEffect(() => {
     const sr = scrollreveal({
       origin: "left",
-      distance: "80px",
-      duration: 1000,
+      distance: "20px",
+      duration: 300,
       reset: false,
     });
 
@@ -42,7 +42,7 @@ export default function Sidebar() {
       `,
       {
         opacity: 0,
-        interval: 300,
+        interval: 100,
       }
     );
   }, []);
@@ -109,9 +109,9 @@ export default function Sidebar() {
                 className={currentLink === 5 ? "active" : "none"}
                 onClick={() => setCurrentLink(5)}
               >
-                <Link to="/profile">
+                <Link to="/profiles">
                   <BsFillChatTextFill />
-                  <span> Profile</span>
+                  <span> Profiles</span>
                 </Link>
               </li>
               <li
