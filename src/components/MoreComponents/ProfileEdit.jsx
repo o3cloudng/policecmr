@@ -9,7 +9,8 @@ import 'react-notifications-component/dist/theme.css';
 // import Animate from 'animate.css-react';
 // import 'animate.css/animate.css';
 
-const ProfileEdit = () => {
+const ProfileEdit = (props) => {
+  console.log(props);
   const fetchUrl = "/profiles/edit";
   const [profile, setProfile] = useState()
   const [data, setData] = useState()

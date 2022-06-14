@@ -176,7 +176,7 @@ const ProfileAdd = () => {
               </Row>
             </Card.Text>
             <Col className="d-block">
-              <Link to="/users" className="btn btn-secondary float-start">
+              <Link to="/profiles" className="btn btn-secondary float-start">
                 {" "}
                 Back
               </Link>
