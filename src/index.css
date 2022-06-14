@@ -17,3 +17,8 @@ h1 {
 h3, h4, h5 {
   font-size: 18px !important;
 }
+.analytic:hover {
+  color: black !important;
+}
+
+

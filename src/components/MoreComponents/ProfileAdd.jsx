@@ -1,93 +1,190 @@
-import React, {  } from "react";
+import React, { useState } from "react";
 import { Card, Button, Row, Col, Form } from "react-bootstrap";
-import { Link } from 'react-router-dom';
-// import api from "../../api/Api";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../../api/Api";
+
+import { ReactNotifications, Store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+
+// import Animate from 'animate.css-react';
+// import 'animate.css/animate.css';
 
 const ProfileAdd = () => {
+  const fetchUrl = "/profiles";
+  const [data, setData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    bioID: "",
+    state: "",
+    address: "",
+  });
+
+  const initialText = 'Add Profile';
+  const [buttonText, setButtonText] = useState(initialText);
+  const enabled = '';
+  const [disabled, setDisabled] = useState(enabled);
+
+  const navigate = useNavigate();
+
+  const submit = async (e) => {
+      e.preventDefault();
+      setButtonText('Loading...');
+      setDisabled('true');
   
+      await api
+        .post(
+          fetchUrl,
+          {
+            title: 'Mr',
+            firstname: data.firstname,
+            lastname: data.lastname,
+            email: data.email,
+            phone: data.phone,
+            bioid: data.bioID,
+            address: data.address,
+            state: data.state,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data)
+          if(res.data) {
+            // window.location = "/profiles";
+            Store.addNotification({
+              title: "Success",
+              message: "New profile added successfully",
+              type: "success",
+              insert: "top",
+              container: "top-right",
+              animationIn: ["animate__animated", "animate__fadeIn"],
+              animationOut: ["animate__animated", "animate__fadeOut"],
+              dismiss: {
+                duration: 5000,
+                onScreen: true
+              }
+            });
+
+            navigate('/profiles');
+          }
+        })
+        .catch((err) => console.log(err));
+      }
+
+  
+ 
+
+  const handleChange = (e) => {
+    const newdata = { ...data };
+    newdata[e.target.id] = e.target.value;
+    setData(newdata);
+    // console.log(newdata);
+  };
+
   return (
     <>
       <Card className="mt-5 col-md-8 offset-md-2">
-        <Card.Header><h3>ADD NEW PROFILE</h3></Card.Header>
+        <Card.Header>
+          <h3>CREATE PROFILE</h3>
+        </Card.Header>
         <Card.Body>
-          <Card.Title>Create profile for new registration</Card.Title>
-          <Card.Text>
-            <Row className="mb-3">
-              <Col>
-                <Form.Control
-                  type="text"
-                  name="firstname"
-                  placeholder="First name"
-                  required
-                //   onChange={handleChange("firstname")}
-                />
-              </Col>
-              <Col>
-                <Form.Control
-                  type="text"
-                  name="lastname"
-                  placeholder="Last name"
-                  required
-                //   onChange={handleChange("lastname")}
-                />
-              </Col>
-            </Row>
-            <Row className="mb-3">
-              <Col>
-                <Form.Control
-                  type="email"
-                  name="email"
-                  placeholder="name@example.com"
-                  required
-                //   onChange={handleChange("email")}
-                />
-              </Col>
-              <Col>
-                <Form.Control
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone number"
-                  required
-                //   onChange={handleChange("phone")}
-                />
-              </Col>
-            </Row>
-            <Row className="mb-3">
-              <Col>
-                <Form.Control
-                  type="text"
-                  name="bioID"
-                  placeholder="Biometric ID"
-                  required
-                //   onChange={handleChange("bioID")}
-                />
-              </Col>
-              <Col>
-                <Form.Control
-                  type="text"
-                  name="state"
-                  placeholder="State"
-                  required
-                //   onChange={handleChange("state")}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Control
-                  as="textarea"
-                  name="address"
-                  placeholder="Address"
-                  rows={3}
-                //   onChange={handleChange("address")}
-                />
-              </Col>
-            </Row>
-          </Card.Text>
-          <Col className="d-block">  
-          <Link to="/profiles" className="btn btn-secondary float-start"> Back</Link>
-          <Button variant="primary" className="float-end"> Add Profile</Button>
-          </Col>
+          <form onSubmit={(e) => submit(e)}>
+            <Card.Title>Create profile for vehicle owners</Card.Title>
+            <Card.Text>
+              <Row className="mb-3">
+                <Col>
+                  <Form.Control
+                    onChange={(e) => handleChange(e)}
+                    type="text"
+                    id="firstname"
+                    value={data.firstname}
+                    placeholder="First name"
+                    required
+                  />
+                </Col>
+                <Col>
+                  <Form.Control
+                    onChange={(e) => handleChange(e)}
+                    type="text"
+                    id="lastname"
+                    value={data.lastname}
+                    placeholder="Last name"
+                    required
+                  />
+                </Col>
+              </Row>
+              <Row className="mb-3">
+                <Col>
+                  <Form.Control
+                    onChange={(e) => handleChange(e)}
+                    type="email"
+                    id="email"
+                    value={data.email}
+                    placeholder="name@example.com"
+                    required
+                  />
+                </Col>
+                <Col>
+                  <Form.Control
+                    onChange={(e) => handleChange(e)}
+                    type="tel"
+                    id="phone"
+                    value={data.phone}
+                    placeholder="Phone number"
+                    required
+                  />
+                </Col>
+              </Row>
+              <Row className="mb-3">
+                <Col>
+                  <Form.Control
+                    onChange={(e) => handleChange(e)}
+                    type="text"
+                    id="bioID"
+                    value={data.bioID}
+                    placeholder="Biometric ID"
+                    required
+                  />
+                </Col>
+                <Col>
+                  <Form.Control
+                    onChange={(e) => handleChange(e)}
+                    type="text"
+                    id="state"
+                    value={data.state}
+                    placeholder="State office"
+                    required
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Control
+                    onChange={(e) => handleChange(e)}
+                    as="textarea"
+                    id="address"
+                    value={data.address}
+                    placeholder="Other information"
+                    rows={3}
+                  />
+                </Col>
+              </Row>
+            </Card.Text>
+            <Col className="d-block">
+              <Link to="/users" className="btn btn-secondary float-start">
+                {" "}
+                Back
+              </Link>
+              <Button variant="primary" disabled={disabled}  type="submit" className="float-end">
+                {buttonText}
+              </Button>
+            </Col>
+          </form>
         </Card.Body>
       </Card>
     </>
@@ -95,3 +192,8 @@ const ProfileAdd = () => {
 };
 
 export default ProfileAdd;
+// ,{
+//   headers: {
+//     ContentType: "application/json"
+//   }
+// }

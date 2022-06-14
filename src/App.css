@@ -20,3 +20,6 @@ h2, h3, h4, h5 {
     height: 100vh;
     width: 100vw;
 }
+h2:hover, h5:hover {
+  color: black;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 
 import styled from "styled-components";
-import BootTable from "../components/MoreComponents/BootTable";
+import UserTable from "../components/MoreComponents/UserTable";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 export default function Users() {
@@ -10,7 +10,7 @@ export default function Users() {
       <Sidebar />
       <Section>
         <Navbar />
-        <BootTable />
+        <UserTable />
       </Section>
     </>
   );

@@ -6,9 +6,10 @@ import { BiGroup } from "react-icons/bi";
 import { FiActivity } from "react-icons/fi";
 import { cardStyles } from "./ReusableStyles";
 export default function Analytics() {
+
   return (
     <Section>
-      <div className="analytic ">
+      <div className="analytic">
         <div className="content">
           <h5>Current month</h5>
           <h2>630</h2>
@@ -60,7 +61,7 @@ const Section = styled.section`
     gap: 1rem;
     transition: 0.5s ease-in-out;
     &:hover {
-      background-color: #ffc107;
+      background-color: #AA8103; 
       color: black;
       svg {
         color: white;

@@ -10,12 +10,12 @@ export default function Login() {
     const sr = scrollreveal({
       origin: "bottom",
       distance: "100px",
-      duration: 500,
+      duration: 2000,
       reset: false,
     });
     sr.reveal(
       `
-        .row
+        .panel
     `,
       {
         opacity: 0,
@@ -26,10 +26,10 @@ export default function Login() {
   return (
     <Section>
       <Navbar />
-      <Card className="mt-5 col-md-6 offset-md-3">
+      <Card className="panel mt-5 col-md-6 offset-md-3">
         <Card.Header><h3>Login</h3></Card.Header>
         <Card.Body>
-          <Card.Title>Please, use your provided credentials</Card.Title>
+          <Card.Title><p>Please, use your provided credentials</p></Card.Title>
           <Card.Text>
             <Row className="my-3">
                 <Col>
@@ -55,7 +55,7 @@ export default function Login() {
             </Row>
           </Card.Text>
           <Col className="d-block">  
-          <Link to="/users" className="btn btn-secondary float-start"> Register</Link>
+          <Link to="/signup" className="btn btn-secondary float-start"> Register</Link>
           <Button variant="primary" className="float-end"> Login</Button>
           </Col>
         </Card.Body>

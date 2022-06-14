@@ -50,21 +50,21 @@ function Signup() {
         });
         sr.reveal(
             `
-            .row
+            .panel
         `,
             {
             opacity: 0,
             interval: 100,
             }
         );
-    }, []);
+    }, [data]);
     return (
     <Section>
         <Navbar />
-        <Card className="mt-5 col-md-8 offset-md-2">
+        <Card className="panel mt-5 col-md-8 offset-md-2">
         <Card.Header><h3>Create Account</h3></Card.Header>
         <Card.Body>
-          <Card.Title>Create profile for new registration</Card.Title>
+          <Card.Title>Create account for administrators</Card.Title>
           <Card.Text>
             <Row className="mb-3">
               <Col>
