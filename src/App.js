@@ -17,6 +17,7 @@ import Home from "./Pages/Home";
 import Profile from "./Pages/ProfilesPage";
 import ProfileAddPage from "./Pages/ProfileAddPage";
 import ProfileEditPage from "./Pages/ProfileEditPage";
+import ProfileDeletePage from "./Pages/ProfileDeletePage";
 
 import OnboardPage from "./Pages/OnboardPage";
 import LoginPage from "./Pages/LoginPage";
@@ -42,6 +43,7 @@ export default function App() {
           <Route path="/profiles" element={<Profile />} />
           <Route path="/profiles/add" element={<ProfileAddPage />} />
           <Route path="/profiles/edit/:id" element={<ProfileEditPage />} />
+          <Route path="/profiles/delete/:id" element={<ProfileDeletePage />} />
           <Route path="/onboard" element={<OnboardPage />} />
           <Route path="/accounts" element={<AccountsPage />} />
           <Route path="/users" element={<UsersPage />} />

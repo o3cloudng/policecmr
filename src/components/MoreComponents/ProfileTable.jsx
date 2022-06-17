@@ -1,15 +1,9 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import api from "../../api/Api";
 import { Link } from "react-router-dom";
 
-import { GlobalContext } from "../../Contexts/GlobalState";
-
 const ProfileTable = () => {
-  // const context = useContext(ProfileContext)
-  const { transactions } = useContext(GlobalContext);
-
-  console.log(transactions);
 
   const [profiles, setProfiles] = useState([]);
 
@@ -49,6 +43,9 @@ const ProfileTable = () => {
               </tr>
             </thead>
             <tbody>
+              {/* if (!profiles){
+                <tr><td colspan="6">Loading...</td></tr>
+              } */}
               {profiles.map((profile) => (
                 <tr key={profile.id}>
                   <td>{profile.title}</td>
@@ -58,14 +55,25 @@ const ProfileTable = () => {
                   <td>{profile.phone}</td>
                   <td>
                     <Link
-                      to={`/profiles/edit/${profile.id}`}
+                      to={{pathname:`/profiles/edit/${profile.id}`, state:{profile:profile}}}
                       className="btn btn-primary"
                     >
-                      {" "}
                       Edit
                     </Link>
                     &nbsp;
-                    <button className="btn btn-danger btn-small">Delete</button>
+                    <Link
+                      to={{pathname:`/profiles/delete/${profile.id}`, state:{profile:profile}}}
+                      className="btn btn-danger"
+                    >
+                      Delete
+                    </Link>
+                    &nbsp;
+                    <Link
+                      to={{pathname:`/profiles/view/${profile.id}`, state:{profile:profile}}}
+                      className="btn btn-warning"
+                    >
+                      View
+                    </Link>
                   </td>
                 </tr>
               ))}

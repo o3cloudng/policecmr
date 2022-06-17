@@ -1,34 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Row, Col, Form } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import api from "../../api/Api";
 
-import { ReactNotifications, Store } from 'react-notifications-component';
+import { Store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 
 // import Animate from 'animate.css-react';
 // import 'animate.css/animate.css';
 
-const ProfileEdit = (props) => {
-  console.log(props);
+const ProfileEdit = () => {
   const fetchUrl = "/profiles/edit";
-  const [profile, setProfile] = useState()
-  const [data, setData] = useState()
-  const {id} = useParams();
-  console.log(id)
+  // const [profile, setProfile] = useState()
+  const id = useParams();
   
-  useEffect((id) => {
+  useEffect(() => {
     const getProfile = async () => {
       console.log("Getting ID...")
       console.log(id);
-      const data = await api.get('http://localhost:8000/api/profiles/',{
-        id:id
-      });
-      // console.log(data)
-      // setData(data.data);
+      const data = await api.get(`/profiles/${id.id}`);
+      console.log(data);
+      setData(data.data);
     };
     getProfile();
-  }, [fetchUrl]);
+  }, [id]);
+
+  const [data, setData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    bioID: "",
+    state: "",
+    address: "",
+  });
 
   const initialText = 'Update Profile';
   const [buttonText, setButtonText] = useState(initialText);
@@ -41,10 +46,13 @@ const ProfileEdit = (props) => {
       e.preventDefault();
       setButtonText('Loading...');
       setDisabled('true');
+
+      console.log("Updating Request....")
+      console.log(data);
   
       await api
-        .post(
-          fetchUrl,
+        .put(
+          `/profiles/${id.id}`,
           {
             title: 'Mr',
             firstname: data.firstname,
@@ -66,8 +74,8 @@ const ProfileEdit = (props) => {
           if(res.data) {
             // window.location = "/profiles";
             Store.addNotification({
-              title: "Success",
-              message: "New profile added successfully",
+              title: "Updated",
+              message: "Profile updated successfully",
               type: "success",
               insert: "top",
               container: "top-right",
@@ -99,10 +107,10 @@ const ProfileEdit = (props) => {
     <>
       <Card className="mt-5 col-md-8 offset-md-2">
         <Card.Header>
-          <h3>CREATE PROFILE</h3>
+          <h3>EDIT PROFILE</h3>
         </Card.Header>
         <Card.Body>
-          {/* <form onSubmit={(e) => update(e)}>
+          <form onSubmit={(e) => update(e)}>
             <Card.Title>Create profile for vehicle owners</Card.Title>
             <Card.Text>
               <Row className="mb-3">
@@ -155,7 +163,7 @@ const ProfileEdit = (props) => {
                     onChange={(e) => handleChange(e)}
                     type="text"
                     id="bioID"
-                    value={data.bioID}
+                    value={data.bioid}
                     placeholder="Biometric ID"
                     required
                   />
@@ -185,15 +193,14 @@ const ProfileEdit = (props) => {
               </Row>
             </Card.Text>
             <Col className="d-block">
-              <Link to="/users" className="btn btn-secondary float-start">
-                {" "}
+              <Link to="/profiles" className="btn btn-secondary float-start">
                 Back
               </Link>
               <Button variant="primary" disabled={disabled}  type="submit" className="float-end">
                 {buttonText}
               </Button>
             </Col>
-          </form> */}
+          </form>
         </Card.Body>
       </Card>
     </>
@@ -201,8 +208,3 @@ const ProfileEdit = (props) => {
 };
 
 export default ProfileEdit;
-// ,{
-//   headers: {
-//     ContentType: "application/json"
-//   }
-// }
