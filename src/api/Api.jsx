@@ -5,7 +5,8 @@ export default axios.create({
         "Content-Type": "application/x-www-form-urlencoded",
         "Accept": "application/json",
     },
-    baseURL: 'http://localhost:8000/api'
+    baseURL: 'https://cmr-laravel-api.herokuapp.com/api'
+    // baseURL: 'http://localhost:8000/api'
 });
 
 
